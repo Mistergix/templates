@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Microdata</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div itemscope itemtype="http://schema.org/PostalAddress" itemid="addr1">
+            <span itemprop="streetAddress">27 avenue du général de Gaulle</span>
+            <span itemprop="addressLocality">Plessis-Trévise</span>
+            <span itemprop="addressPostalCode">94420</span>
+        </div>
+        <div itemscope>
+            Je m'appelle <span itemprop="name">Nicolas</span>.
+        </div>
+        <div itemscope itemref="addr1">
+            <span itemprop="addressCountry">France</span>
+        </div>
+
+        <div itemscope itemtype="http://schema.org/Organization">
+            <div itemprop="member" itemscope itemtype="http://schema.org/Person">
+                Hadrien
+            </div>
+            <div itemprop="member" itemscope itemtype="http://schema.org/Person">
+                Paul
+            </div>
+        </div>
+
+        <div itemscope itemtype="http://schema.org/Movie http://schema.org/Book">
+            <span itemprop="name">Le retour du roi</span>
+        </div>
+
+        <div itemscope itemtype="http://schema.org/Person">
+            <p>
+                Je m'appelle <span itemprop="name">Nicolas</span>, j'habitais </p>
+            <div itemscope itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">27 avenue du général de Gaulle</span>
+                <span itemprop="addressLocality">Plessis-Trévise</span>
+                <span itemprop="addressPostalCode">94420</span>
+            </div>
+            
+        </div>
+
+    </body>
+</html>
