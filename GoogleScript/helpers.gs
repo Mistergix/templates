@@ -109,13 +109,14 @@ function getRowIndexByTutorID(sheet, tutorID, idCol)
  */
 function isGoodFormat(sheet, cols) 
 {
-  var range = sheet.getRange(1, 1, 1, cols.length);
+  var range = sheet.getRange(1, env.firstCol, 1, cols.length);
   var values = range.getValues()[0];
   
   for (var i = 0; i < values.length; i++)
   {
     if(values[i] != cols[i])
     {
+      SpreadsheetApp.getActiveSpreadsheet().toast("La colonne " + (i + env.firstCol).toString() + " est " + values[i] ". Attendu : " + cols[i]);
       return false;
     }
   }
