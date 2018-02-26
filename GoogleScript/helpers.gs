@@ -116,7 +116,7 @@ function isGoodFormat(sheet, cols)
   {
     if(values[i] != cols[i])
     {
-      SpreadsheetApp.getActiveSpreadsheet().toast("La colonne " + (i + env.firstCol).toString() + " est " + values[i] + ". Attendu : " + cols[i], , "Colonnes pas au bon format");
+      SpreadsheetApp.getActiveSpreadsheet().toast("La colonne " + num2Col((i + env.firstCol)) + " est " + values[i] + "\nAttendu : " + cols[i], "Colonnes pas au bon format", 10);
       return false;
     }
   }
