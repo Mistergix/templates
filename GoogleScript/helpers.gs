@@ -73,7 +73,7 @@ function openSheetByID(ss, id)
  * Sheet, str, int -> int
  * Returns the Row in which the id is
  */
-function getRowIndexByTutorID(sheet, tutorID, idCol)
+function getRowIndexByID(sheet, ID, idCol)
 {
   var firstRow = env.firstRow;
   var lastRow = sheet.getLastRow();
@@ -93,7 +93,7 @@ function getRowIndexByTutorID(sheet, tutorID, idCol)
   
   for (var i = 0; i < ids.length; i++)
   {
-    if (tutorID == ids[i][0])
+    if (ID == ids[i][0])
     {
      return i + env.firstRow; 
     }
