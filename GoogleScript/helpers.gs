@@ -193,7 +193,7 @@ function getDateArray(dateString)
 
 /*
  * str -> str
- * Fri Dec 22 2017 00:00:00 GMT+0100 (CET)
+ * Fri Dec 22 2017 00:00:00 GMT+0100 (CET) -> 22/12/2017
  */
 function convertToFrenchDate(dateString) 
 {
