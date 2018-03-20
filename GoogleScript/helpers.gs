@@ -8,7 +8,7 @@ function column(cols, header, startZero)
   var index = cols.indexOf(header);
   if(index < 0)
   {
-    return -1;
+    throw new Error("Pas de colonne dont la clé est " + header);
   }
   
   return index + env.firstCol - (startZero?env.firstCol:0);
