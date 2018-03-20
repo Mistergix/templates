@@ -1,9 +1,9 @@
 /************************* SHEETS ********************************/
 /*
- * list[headers], header -> int
+ * list[headers], string, bool -> int
  * Returns the column where the header is
  */
-function column(cols, header)
+function column(cols, header, startZero)
 {
   var index = cols.indexOf(header);
   if(index < 0)
@@ -11,7 +11,7 @@ function column(cols, header)
     return -1;
   }
   
-  return index + env.firstCol;
+  return index + env.firstCol - startZero?env.firstCol:0;
 }
 
 /*
