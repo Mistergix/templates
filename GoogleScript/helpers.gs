@@ -11,7 +11,7 @@ function column(cols, header, startZero)
     return -1;
   }
   
-  return index + env.firstCol - startZero?env.firstCol:0;
+  return index + env.firstCol - (startZero?env.firstCol:0);
 }
 
 /*
