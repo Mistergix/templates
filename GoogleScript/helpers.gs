@@ -193,18 +193,47 @@ function getDateArray(dateString)
 }
 
 /*
- * str -> str
- * Fri Dec 22 2017 00:00:00 GMT+0100 (CET) -> 22/12/2017
+ * Sheet, str, list[headers], int, int -> void
+ * Removes the duplicated lines, uses the column as a filter 
+ * /!\ : sorts the sheet
  */
-function convertToFrenchDate(dateString) 
+function removeDuplicates(sheet, colKey, cols, firstCol, firstRow)
 {
-  if(dateString == null || dateString == "")
+  Logger.log("Remove duplicates")
+  var a1notation = getA1Notation(firstCol, firstRow, sheet.getLastColumn(), sheet.getLastRow());
+  Logger.log(a1notation)
+  var range = sheet.getRange(a1notation);
+  var col = column(cols, colKey);
+  if (col <= -1)
   {
-    return "";
+    throw new Error("Remove duplicates, no column with this key : " + colKey + " in " + cols); 
   }
-  var date = new Date(dateString);
+  range.sort(col);
+  var values = range.getDisplayValues();
+  col = col - firstCol;
   
-  var formattedDate = Utilities.formatDate(date, "GMT+02", "dd/MM/yyyy");
+  var row = 0;
   
-  return formattedDate;
+  while (row < values.length)
+  {
+    var j = row+1;
+    while(j < values.length && (values[j][col] == values[row][col]))
+    {
+      values[j][col] = "";
+      j++;
+    }
+    row = j;
+  }
+  
+  range.setValues(values);
+  
+  for (var row = values.length - 1; row>=0; row--) 
+  {
+    if(values[row][col] == "")
+    {
+      sheet.deleteRow(row + firstRow);
+    }
+  }
+  
+  Logger.log("Remove duplicates --END--")
 }
