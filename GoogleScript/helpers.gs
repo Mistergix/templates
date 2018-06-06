@@ -31,6 +31,16 @@ function num2Col(column)
   return letter;
 }
 
+function col2num(letter)
+{
+  var column = 0, length = letter.length;
+  for (var i = 0; i < length; i++)
+  {
+    column += (letter.charCodeAt(i) - 64) * Math.pow(26, length - i - 1);
+  }
+  return column;
+}
+
 /*
  * int, int, int, int, -> a1Notation
  * Returns the A1 Notation, eg : 1, 12, 2, 22 -> "A12:B22"
