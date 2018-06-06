@@ -237,3 +237,12 @@ function removeDuplicates(sheet, colKey, cols, firstCol, firstRow)
   
   Logger.log("Remove duplicates --END--")
 }
+
+/*
+ * int, Object -> Object[]
+ * returns an array of length len filled with value
+ */
+function filledRow(len, value) 
+{
+  return Array.apply(null, Array(len)).map(function(val, idx) { return value});
+}
