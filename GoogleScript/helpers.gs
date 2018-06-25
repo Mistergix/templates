@@ -1,9 +1,9 @@
 /************************* SHEETS ********************************/
 /*
- * list[headers], string, bool -> int
+ * list[headers], string, int, bool -> int
  * Returns the column where the header is
  */
-function column(cols, header, startZero)
+function column(cols, header, firstCol, startZero)
 {
   var index = cols.indexOf(header);
   if(index < 0)
@@ -11,7 +11,7 @@ function column(cols, header, startZero)
     throw new Error("Pas de colonne dont la clé est " + header);
   }
   
-  return index + env.firstCol - (startZero?env.firstCol:0);
+  return index + firstCol - (startZero?firstCol:0);
 }
 
 /*
