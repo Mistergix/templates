@@ -1,3 +1,8 @@
+function getIdFromUrl(url) 
+{ 
+  return url.match(/[-\w]{25,}/); 
+}
+
 /************************* SHEETS ********************************/
 /*
  * list[headers], string, int, bool -> int
