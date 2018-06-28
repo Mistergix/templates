@@ -85,12 +85,11 @@ function openSheetByID(ss, id)
 }
 
 /*
- * Sheet, str, int -> int
+ * Sheet, str, int, int -> int
  * Returns the Row in which the id is
  */
-function getRowIndexByID(sheet, ID, idCol)
+function getRowIndexByID(sheet, ID, idCol, firstRow)
 {
-  var firstRow = env.firstRow;
   var lastRow = sheet.getLastRow();
   
   var range;
@@ -110,7 +109,7 @@ function getRowIndexByID(sheet, ID, idCol)
   {
     if (ID == ids[i][0])
     {
-     return i + env.firstRow; 
+     return i + firstRow; 
     }
   }
   
