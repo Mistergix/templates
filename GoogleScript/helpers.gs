@@ -1,3 +1,67 @@
+function convertRangeToCsvFile(range) 
+{
+  // get available data range in the spreadsheet
+  var activeRange = range;
+  try {
+    var data = activeRange.getValues();
+    var csvFile = undefined;
+
+    // loop through the data in the range and build a string with the csv data
+    if (data.length > 1) {
+      var csv = "";
+      for (var row = 0; row < data.length; row++) {
+        for (var col = 0; col < data[row].length; col++) {
+          if (data[row][col].toString().indexOf(",") != -1) {
+            data[row][col] = "\"" + data[row][col] + "\"";
+          }
+        }
+
+        // join each row's columns
+        // add a carriage return to end of each row, except for the last one
+        if (row < data.length-1) {
+          csv += data[row].join(",") + "\r\n";
+        }
+        else {
+          csv += data[row];
+        }
+      }
+      csvFile = csv;
+    }
+    return csvFile;
+  }
+  catch(err) {
+    Logger.log(err);
+    Browser.msgBox(err);
+  }
+}
+
+/*
+ * Sheet, int -> int
+ * return the last non empty row in the sheet according to the column
+ */
+function GetLastNonEmptyRow(sheet, col)
+{
+  var lastRow = sheet.getLastRow();
+  var firstRow = 1;
+  var a1 = getA1Notation(col, firstRow, col, lastRow);
+  var range = sheet.getRange(a1);
+  var rows = range.getDisplayValues().map(function(tab){ return tab[0];});
+  for(var i = 0; i < rows.length; i++)
+  {
+    if(rows[i] == "")
+    {
+      if(i == 0)
+      {
+        return 1;
+      }
+      
+      return i;
+    }
+  }
+  
+  return lastRow;
+}
+
 function getIdFromUrl(url) 
 { 
   return url.match(/[-\w]{25,}/); 
