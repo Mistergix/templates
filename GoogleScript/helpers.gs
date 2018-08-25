@@ -62,6 +62,33 @@ function GetLastNonEmptyRow(sheet, col)
   return lastRow;
 }
 
+/*
+ * Sheet, int -> int
+ * return the last non empty Column in the sheet according to the row index
+ */
+function GetLastNonEmptyColumn(sheet, row)
+{
+  var lastCol = sheet.getLastColumn();
+  var firstCol = 1;
+  var a1 = getA1Notation(firstCol, row, lastCol, row);
+  var range = sheet.getRange(a1);
+  var cols = range.getDisplayValues()[0];
+  for(var i = 0; i < cols.length; i++)
+  {
+    if(cols[i] == "")
+    {
+      if(i == 0)
+      {
+        return 1;
+      }
+      
+      return i;
+    }
+  }
+  
+  return lastCol;
+}
+
 function getIdFromUrl(url) 
 { 
   return url.match(/[-\w]{25,}/); 
