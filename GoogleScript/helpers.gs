@@ -1,4 +1,4 @@
-function convertRangeToCsvFile(range) 
+function convertRangeToCsvFile(range, suffix) 
 {
   // get available data range in the spreadsheet
   var activeRange = range;
@@ -7,22 +7,26 @@ function convertRangeToCsvFile(range)
     var csvFile = undefined;
 
     // loop through the data in the range and build a string with the csv data
-    if (data.length > 1) {
+    if (data.length >= 1) {
       var csv = "";
       for (var row = 0; row < data.length; row++) {
         for (var col = 0; col < data[row].length; col++) {
+          data[row][col] = data[row][col].toString().replace(/\"/g, "\'"); // Escape quotes
+          data[row][col] = data[row][col].toString().replace(/\n/g, " "); // Escape lines
+          data[row][col] = data[row][col].toString().replace(/\r/g, " "); // Escape lines
           if (data[row][col].toString().indexOf(",") != -1) {
             data[row][col] = "\"" + data[row][col] + "\"";
           }
         }
-
+        
         // join each row's columns
         // add a carriage return to end of each row, except for the last one
         if (row < data.length-1) {
-          csv += data[row].join(",") + "\r\n";
+          
+          csv += data[row] + "," + suffix + "\r\n";
         }
         else {
-          csv += data[row];
+          csv += data[row] + "," + suffix;
         }
       }
       csvFile = csv;
