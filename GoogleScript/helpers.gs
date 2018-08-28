@@ -98,6 +98,11 @@ function getIdFromUrl(url)
   return url.match(/[-\w]{25,}/); 
 }
 
+function uniqueID() 
+{
+  return (Math.floor((Math.random()*1000000))).toString(32)+''+(new Date().getTime()).toString(32)
+};
+
 /************************* SHEETS ********************************/
 /*
  * list[headers], string, int, bool -> int
