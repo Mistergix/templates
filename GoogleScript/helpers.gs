@@ -100,20 +100,15 @@ function GetLastNonEmptyColumn(sheet, row)
   var a1 = getA1Notation(firstCol, row, lastCol, row);
   var range = sheet.getRange(a1);
   var cols = range.getDisplayValues()[0];
-  for(var i = 0; i < cols.length; i++)
+  for(var i = lastCol - firstCol ; i >= 0; i--)
   {
-    if(cols[i] == "")
+    if(cols[i] != "")
     {
-      if(i == 0)
-      {
-        return 1;
-      }
-      
-      return i;
+      return i + firstCol;
     }
   }
   
-  return lastCol;
+  return firstCol;
 }
 
 function getIdFromUrl(url) 
