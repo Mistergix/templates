@@ -140,7 +140,7 @@ function column(headers, header, firstCol, startZero)
   var index = headers.indexOf(header);
   if(index < 0)
   {
-    throw new Error("Pas de colonne dont la clé est " + header);
+    throw new Error("Pas de colonne dont la clé est " + header + " dans " + headers);
   }
   
   return index + firstCol - (startZero?firstCol:0);
