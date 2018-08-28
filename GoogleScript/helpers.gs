@@ -98,6 +98,10 @@ function getIdFromUrl(url)
   return url.match(/[-\w]{25,}/); 
 }
 
+/*
+ * void -> string
+ * Returns a unique ID string
+ */
 function uniqueID() 
 {
   return (Math.floor((Math.random()*1000000))).toString(32)+''+(new Date().getTime()).toString(32)
