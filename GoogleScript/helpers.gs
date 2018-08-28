@@ -1,3 +1,26 @@
+/*
+ * {id, headerRow, firstCol} -> list[string]
+ * Returns the headers oh a sheet
+ */
+function getHeaders(sheetData)
+{
+  // Get the sheet
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet_id = sheetData.id;
+  var sheet = openSheetByID(ss, sheet_id);
+  
+  // Get the range
+  var row = sheetData.headerRow;
+  var lastCol = GetLastNonEmptyColumn(sheet, row);
+  var firstCol = sheetData.firstCol;
+  var a1 = getA1Notation(firstCol, row, lastCol, row);
+  var range = sheet.getRange(a1);
+  
+  var headers = range.getDisplayValues()[0];
+  
+  return headers;
+}
+
 function convertRangeToCsvFile(range, suffix) 
 {
   // get available data range in the spreadsheet
