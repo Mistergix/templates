@@ -73,20 +73,15 @@ function GetLastNonEmptyRow(sheet, col)
   var a1 = getA1Notation(col, firstRow, col, lastRow);
   var range = sheet.getRange(a1);
   var rows = range.getDisplayValues().map(function(tab){ return tab[0];});
-  for(var i = 0; i < rows.length; i++)
+  for(var i = lastRow - firstRow; i >= 0; i--)
   {
-    if(rows[i] == "")
+    if(rows[i] != "")
     {
-      if(i == 0)
-      {
-        return 1;
-      }
-      
-      return i;
+      return i + firstRow;
     }
   }
   
-  return lastRow;
+  return firstRow;
 }
 
 /*
