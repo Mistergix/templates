@@ -135,15 +135,30 @@ function uniqueID()
  * list[headers], string, int, bool -> int
  * Returns the column where the header is
  */
-function column(cols, header, firstCol, startZero)
+function column(headers, header, firstCol, startZero)
 {
-  var index = cols.indexOf(header);
+  var index = headers.indexOf(header);
   if(index < 0)
   {
     throw new Error("Pas de colonne dont la clé est " + header);
   }
   
   return index + firstCol - (startZero?firstCol:0);
+}
+
+/*
+ * int -> list[string]
+ * Returns a list filled with size empty strings
+ */
+function emptyList(size)
+{
+  var li = [];
+  for(var i = 0; i < size; i++)
+  {
+    li.push("");
+  }
+  
+  return li;
 }
 
 /*
