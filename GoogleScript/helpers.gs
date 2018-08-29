@@ -41,6 +41,10 @@ function convertRangeToCsvFile(range, suffix)
 {
   // get available data range in the spreadsheet
   var activeRange = range;
+  if(suffix)
+  {
+    suffix = "," + suffix;
+  }
   try {
     var data = activeRange.getValues();
     var csvFile = undefined;
@@ -62,10 +66,10 @@ function convertRangeToCsvFile(range, suffix)
         // add a carriage return to end of each row, except for the last one
         if (row < data.length-1) {
           
-          csv += data[row] + "," + suffix + "\r\n";
+          csv += data[row] + suffix + "\r\n";
         }
         else {
-          csv += data[row] + "," + suffix;
+          csv += data[row] + suffix;
         }
       }
       csvFile = csv;
