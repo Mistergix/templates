@@ -1,4 +1,20 @@
 /*
+ * list[string], int -> dict[string, int]
+ * Returns all the indexes of the headers
+ */
+function GetIndexes(headers, firstCol)
+{
+  var indexes = {};
+  for(var i = 0; i < headers.length; i++)
+  {
+    var header = headers[i];
+    indexes[header] = i;
+  }
+  
+  return indexes;
+}
+
+/*
  * {id, headerRow, firstCol} -> list[string]
  * Returns the headers oh a sheet
  */
