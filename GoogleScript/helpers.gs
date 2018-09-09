@@ -1,3 +1,39 @@
+function Row2Json(row, headers)
+{
+  if(row.length != headers.length)
+  {
+    throw new Error("The arrays don't have the same size : " + headers + " --- " + row); 
+  }
+  
+  var json = {};
+  for(var i = 0; i < row.length; i++)
+  {
+    json[headers[i]] = row[i]; 
+  }
+  
+  return json;
+}
+
+/*
+ * int -> list[string]
+ * Returns a list filled with size empty strings
+ */
+function emptyList(size)
+{
+  return fillList(size, "");
+}
+
+function fillList(size, fill)
+{
+  var li = [];
+  for(var i = 0; i < size; i++)
+  {
+    li.push(fill);
+  }
+  
+  return li;
+}
+
 /*
  * list[string], int -> dict[string, int]
  * Returns all the indexes of the headers
