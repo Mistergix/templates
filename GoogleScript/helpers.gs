@@ -14,6 +14,17 @@ function Row2Json(row, headers)
   return json;
 }
 
+function log(msg, ss)
+{
+  if(ss)
+  {
+    ss.toast(msg); 
+  }
+  
+  Logger.log(msg);
+}
+
+
 /*
  * int -> list[string]
  * Returns a list filled with size empty strings
