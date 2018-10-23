@@ -14,6 +14,8 @@ function Row2Json(row, headers)
   return json;
 }
 
+
+// LOGGING 
 function log(msg, ss)
 {
   if(ss)
@@ -24,6 +26,16 @@ function log(msg, ss)
   Logger.log(msg);
 }
 
+function log_header(msg, css)
+{
+  log("-------------------------------------------------------------");
+  log(msg, css);
+}
+
+function log_loop()
+{
+  log("*********************************************************");
+}
 
 /*
  * int -> list[string]
