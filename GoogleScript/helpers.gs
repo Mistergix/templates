@@ -14,6 +14,31 @@ function Row2Json(row, headers)
   return json;
 }
 
+function removeDuplicate(sheet, range, headers, indexes, fr) 
+{
+  var values = range.getValues();
+  
+  var i = 0;
+  
+  var ids = {};
+  
+  for (var i = values.length - 1; i>=0; i--) 
+  {
+    var row = values[i];
+    
+    var id = row[indexes.child_id];
+    
+    if(ids[id]) // already encountered
+    {
+      sheet.deleteRow(i + fr);
+    }
+    else
+    {
+      ids[id] = true; 
+    }
+  }
+}
+
 
 // LOGGING 
 function log(msg, ss)
