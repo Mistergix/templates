@@ -49,6 +49,7 @@ function log(msg, ss)
   }
   
   Logger.log(msg);
+  console.log(msg);
 }
 
 function log_header(msg, css)
