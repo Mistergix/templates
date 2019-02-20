@@ -52,10 +52,10 @@ function log(msg, ss)
   console.log(msg);
 }
 
-function log_header(msg, css)
+function log_header(msg, ss)
 {
   log("-------------------------------------------------------------");
-  log(msg, css);
+  log(msg, ss);
 }
 
 function log_loop()
