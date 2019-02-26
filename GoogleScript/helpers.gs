@@ -39,8 +39,14 @@ function removeDuplicate(sheet, range, headers, indexes, fr)
   }
 }
 
+// DATES
 function weeksBetween(d1, d2) {
     return Math.round((d2 - d1) / (7 * 24 * 60 * 60 * 1000));
+}
+
+function toDate(dateStr, splitter) {
+  var parts = dateStr.split(splitter)
+  return new Date(parts[2], parts[1] - 1, parts[0])
 }
 
 
